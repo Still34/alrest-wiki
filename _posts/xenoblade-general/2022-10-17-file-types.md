@@ -4,13 +4,17 @@ categories:
   - xenoblade-general
 tags:
   - Resources
+toc: true
+layout: single
 ---
 
 
 {: .notice--info}
 This page contains all of the proprietary file types found across all of the Xenoblade series.
 
-## ARH
+## All-purpose
+
+### ARH
 
 Header: `arh1` (`61 72 68 31`)
 
@@ -18,7 +22,7 @@ Description: Proprietary header file. Contains information for the corresponding
 
 Compatible parser: [XenoLib]
 
-## ARD
+### ARD
 
 Header: `xbc1\x03` (`78 62 63 31 03`)
 
@@ -26,7 +30,7 @@ Description: Proprietary archive-like file containing information such as its ch
 
 Compatible parser: [XenoLib]
 
-## PCK
+### PCK
 
 Header: `AKPK` (`41 4B 50 4B`)
 
@@ -34,7 +38,7 @@ Description: Proprietary packed audio format by Wwise. This file format is used 
 
 Compatible parser: [Custom BMS script]
 
-## BDAT
+### BDAT
 
 Header: `BDAT` (`42 44 41 54`)
 
@@ -42,27 +46,7 @@ Description: Proprietary data table format. A BDAT may contain multiple tables. 
 
 Compatible parser: [XenoLib]
 
-## ATTRANIM
-
-## SVD
-
-## WILTP
-
-## KZPS
-
-## SEG
-
-## MI
-
-## WILAY
-
-Header: `LAHD\x13'` (`4C 41 48 44 13 27`)
-
-Description: Proprietary layout file. Often used in menus and is likely to contain a common image format within.
-
-Compatible parser: [XbTool]
-
-## CRT
+### CRT
 
 Header: `CRT` (`43 52 54`)
 
@@ -70,36 +54,7 @@ Description: Proprietary file for end-credits. Not to be confused to certificate
 
 Compatible parser: N/A
 
-## WISMHD
-
-## WISMDA
-
-Header: `xbc1\01` (`78 62 63 31 01`)
-
-Description: Proprietary overworld map file. Contains information about the map terrain, props, textures, materials, etc.
-
-Compatible parser: N/A
-
-## NVHE
-
-Header: `NVMS` (`4E 56 4D 53`)
-
-Description: Proprietary file format related to maps. Purpose unknown.
-
-Compatible parser: N/A
-## NVDA
-
-## IDCM
-
-Header: `IDCM` (`49 44 43 4D`)
-
-Description: Proprietary file format related to maps. Speculated to be collision mesh.
-
-Compatible parser: N/A
-
-## LVB
-
-## ETH
+### ETH
 
 Header: `69 C9 0B 07 69 20 77 78`
 
@@ -107,7 +62,9 @@ Description: Proprietary file format for Event Theater. Purpose unknown.
 
 Compatible parser: N/A
 
-## BEH
+## Models/Animations/Textures
+
+### BEH
 
 Header: `HDEV` (`68 64 65 76`)
 
@@ -115,7 +72,7 @@ Description: Proprietary cutscene header file. Contains references to all data (
 
 Compatible parser: N/A
 
-## BEB
+### BEB
 
 Header: N/A
 
@@ -123,51 +80,138 @@ Description: Proprietary cutscene data file. Purpose unknown.
 
 Compatible parser: N/A
 
-## WIEFXA
+### WISMT
 
-## WIPAC
+Header: N/A (Typically compressed XBC1 objects)
 
-## WISMT
+Description: Proprietary model format. This file format may contain raw mesh data, textures, and shader code. Typically associated with [WIMDO](#wimdo).
 
-## WIMDO
+Compatible parser: N/A
 
-## CHR
+### WIMDO
 
-## MOT
+Header: `DM<XX>` (`44 4D XX XX`)
 
-## AAB
+Description: Proprietary model format. This file format may contain mesh, materials, state flags, bones used for mesh weights, etc. A corresponding [WISMT](#wismt) file may not exist, depending on whether a raw mesh data is embedded within the [WIMDO](#wimdo).
 
-## PAD
+Compatible parser: [XenoLib]
 
-## WITEX
+### WILAY
 
-## WISHP
+Header: `LAHD\x13'` (`4C 41 48 44 13 27`)
 
-## WILGT
+Description: Proprietary layout file. Often used in menus and is likely to contain a common image format within.
 
-## WITX
+Compatible parser: [XbTool]
 
-## DATA
+### ATTRANIM
 
-## PTC
+## Maps
 
-## MSBP
+### WISMDA
 
-## IDMAP
+Header: N/A
 
-## WIFNT
+Description: Proprietary overworld map file format. Contains information about the map terrain, props, textures, materials, etc.
 
-## WISTY
+Compatible parser: N/A
 
-## OCPAM
+### WISMHD
 
-## DAT
+{: .notice--warning}
+**Another vision...** This file format is still being studied.
 
-## ANM
+Header: `DMSM\x80'` (`44 4D 53 4D 80 27`)
 
-## EVA
+Description: Proprietary map-related file format. Contains table maps of related [WISMDA](#wismda) files and other map-related information, such as volumetric cloud information and more.
 
-## WEBM
+Compatible parser: N/A
+
+### NVHE
+
+Header: `NVMS` (`4E 56 4D 53`)
+
+Description: Proprietary file format related to maps. Purpose unknown.
+
+Compatible parser: N/A
+
+### IDCM
+
+Header: `IDCM` (`49 44 43 4D`)
+
+Description: Proprietary file format related to maps. Speculated to be collision mesh.
+
+Compatible parser: N/A
+
+## Video/Audio
+
+### WEBM
+
+Header: `1A 45 DF A3`
+
+Description: Open-source WebM audiovisual container file format. In Xenoblade's case, these typically hold pre-rendered cutscenes in a VP9 video stream and may also contain an optional Vorbis audio stream that does not hold any data (as the audio is played separately from Wwise).
+
+Compatible parser: ffmpeg
+
+### WEM
+
+### BNK
+
+## Others
+
+### SVD
+
+### WILTP
+
+### KZPS
+
+### SEG
+
+### MI
+
+### NVDA
+
+### LVB
+
+### WIEFXA
+
+### WIPAC
+
+### CHR
+
+### MOT
+
+### AAB
+
+### PAD
+
+### WITEX
+
+### WISHP
+
+### WILGT
+
+### WITX
+
+### DATA
+
+### PTC
+
+### MSBP
+
+### IDMAP
+
+### WIFNT
+
+### WISTY
+
+### OCPAM
+
+### DAT
+
+### ANM
+
+### EVA
 
 [XenoLib]: https://github.com/PredatorCZ/XenoLib
 [XbTool]: https://github.com/Thealexbarney/XbTool
