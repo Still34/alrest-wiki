@@ -1,7 +1,7 @@
 ---
 title: "File Types in the Xenoblade Series"
 categories:
-  - General
+  - xenoblade-general
 tags:
   - Resources
 ---
@@ -109,7 +109,19 @@ Compatible parser: N/A
 
 ## BEH
 
+Header: `HDEV` (`68 64 65 76`)
+
+Description: Proprietary cutscene header file. Contains references to all data (voice lines, actors, objects, effects, engine commands, etc.) used in the cutscene. Every file references "EventBuilder v0.0.27" tool at the end of it. Based on the file contents EventBuilder seems to be pretty advanced cutscene authoring tool similar to Source Filmmaker and Unreal Sequencer.
+
+Compatible parser: N/A
+
 ## BEB
+
+Header: N/A
+
+Description: Proprietary cutscene data file. Purpose unknown.
+
+Compatible parser: N/A
 
 ## WIEFXA
 
