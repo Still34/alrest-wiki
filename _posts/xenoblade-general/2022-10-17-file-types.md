@@ -4,6 +4,7 @@ categories:
   - xenoblade-general
 tags:
   - Resources
+  - Xenoblade (Series)
 toc: true
 layout: single
 ---
