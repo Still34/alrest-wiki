@@ -1,27 +1,11 @@
-# Minimal Mistakes remote theme starter
+# Alrest Wiki
 
-Click [**Use this template**](https://github.com/mmistakes/mm-github-pages-starter/generate) button above for the quickest method of getting started with the [Minimal Mistakes Jekyll theme](https://github.com/mmistakes/minimal-mistakes).
+This repository contains the Jekyll page behind the https://alrest.wiki, an all-in-one Xeno-series technical reverse engineering documentation. All of the pages are automatically built and served to the `gh-pages` branch via a fork of [jekyll-action](https://github.com/Still34/jekyll-action).
 
-Contains basic configuration to get you a site with:
+## Contribution
 
-- Sample posts.
-- Sample top navigation.
-- Sample author sidebar with social links.
-- Sample footer links.
-- Paginated home page.
-- Archive pages for posts grouped by year, category, and tag.
-- Sample about page.
-- Sample 404 page.
-- Site wide search.
+Any kind of help is wanted, as this is a massive project and undertaking for a team with less than a few members. If you had previously worked on reverse engineering any of the Xeno games from MonolithSoft, please do chip in! Anyone can open a PR to create and/or modify an existing page, though preferably an issue should be opened beforehand. If you have no idea how to open a PR, simply open an issue stating the changes you'd like, and after discussion, we will integrate it into our pages.
 
-Replace sample content with your own and [configure as necessary](https://mmistakes.github.io/minimal-mistakes/docs/configuration/).
+## Credits
 
----
-
-## Troubleshooting
-
-If you have a question about using Jekyll, start a discussion on the [Jekyll Forum](https://talk.jekyllrb.com/) or [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll). Other resources:
-
-- [Ruby 101](https://jekyllrb.com/docs/ruby-101/)
-- [Setting up a Jekyll site with GitHub Pages](https://jekyllrb.com/docs/github-pages/)
-- [Configuring GitHub Metadata](https://github.com/jekyll/github-metadata/blob/master/docs/configuration.md#configuration) to work properly when developing locally and avoid `No GitHub API authentication could be found. Some fields may be missing or have incorrect data.` warnings.
+See [About](https://alrest.wiki/about).
