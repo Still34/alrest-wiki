@@ -62,6 +62,14 @@ Description: Proprietary file format for Event Theater. Purpose unknown.
 
 Compatible parser: N/A
 
+### PKB
+
+Header: `N/A`
+
+Description: Primary archive format for XC1(Wii). Requires PKH file as key to decompress.
+
+Compatible parser: [Custom BMS script]
+
 ## Models/Animations/Textures
 
 ### BEH
@@ -104,6 +112,30 @@ Description: Proprietary layout file. Often used in menus and is likely to conta
 
 Compatible parser: [XbTool]
 
+### BRRES
+
+Header: `62 72 65 73`
+
+Description: Primary model container for characters, NPCs, and enemeis in XC1(Wii).
+
+Compatible parser: Brawlcrate/Brresviewer
+
+### MCA
+
+Header: `6D 63 61 00`
+
+Description: Contains animations for characters, NPCs, and enemeis in XC1(Wii).
+
+Compatible parser: Brresviewer
+
+### KYP
+
+Header: `4B 59 50 00`
+
+Description: Contains both models and animations for characters, NPCs, and enemeis in XC1(Wii).
+
+Compatible parser: Brresviewer
+
 ### ATTRANIM
 
 ## Maps
@@ -143,6 +175,31 @@ Description: Proprietary file format related to maps. Speculated to be collision
 
 Compatible parser: N/A
 
+### DAP
+
+Header: `44 41 50 31`
+
+Description: Primary file archive for maps in XC1(Wii). Related to LOD.
+
+Compatible parser: [Custom BMS script]
+
+### LOD
+
+Header: `4C 4F 44 49`
+
+Description: Speculated to contain LOD data for maps in XC1(Wii). Related to DAP.
+
+Compatible parser: N/A
+
+### MAP
+
+Header: `62 72 65 73`
+
+Description: Contains base map objects for XC1(Wii). Resides inside DAP archives.
+Other related files(albeit unexplored) include ID, LGT, MPF, OCC, and KP. Extracted from DAP.
+
+Compatible parser: Brresviewer
+
 ## Video/Audio
 
 ### WEBM
@@ -152,6 +209,14 @@ Header: `1A 45 DF A3`
 Description: Open-source WebM audiovisual container file format. In Xenoblade's case, these typically hold pre-rendered cutscenes in a VP9 video stream and may also contain an optional Vorbis audio stream that does not hold any data (as the audio is played separately from Wwise).
 
 Compatible parser: ffmpeg
+
+### ADX
+
+Header: `80 00 00 24`
+
+Description: Primary audio format for XC1(Wii).
+
+Compatible parser: Foobar Vgmstream Plugin
 
 ### WEM
 
