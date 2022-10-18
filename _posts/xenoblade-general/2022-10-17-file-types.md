@@ -5,8 +5,13 @@ categories:
 tags:
   - Resources
   - Xenoblade (Series)
+permalink: /files
+header:
+  overlay_color: '#000'
+  overlay_filter: '0.75'
+  overlay_image: /assets/images/splash-filetypes.jpg
+excerpt: File types found within the Xenoblade (Series) files.
 toc: true
-layout: single
 ---
 
 
