@@ -76,6 +76,14 @@ Description: Primary archive format for XC1(Wii). Requires PKH file as key to de
 
 Compatible parser: [Custom BMS script]
 
+### CPK
+
+Header: `43 50 4B 20`
+
+Description: Primary archive for Xenoblade X.
+
+Compatible parser: [Custom BMS script]
+
 ## Models/Animations/Textures
 
 ### BEH
@@ -142,6 +150,22 @@ Description: Contains both models and animations for characters, NPCs, and eneme
 
 Compatible parser: Brresviewer
 
+### CAMDO
+
+Header: `4D 58 4D 44`
+
+Description: Primary model format for Xenoblade X. Related to CASMT.
+
+Compatible parser: Xenomax[3ds Max Script]
+
+### CASMT
+
+Header: `N/A`
+
+Description: Primary model format for Xenoblade X. Related to CAMDO.
+
+Compatible parser: Xenomax[3ds Max Script]
+
 ### ATTRANIM
 
 ## Maps
@@ -206,6 +230,22 @@ Other related files(albeit unexplored) include ID, LGT, MPF, OCC, and KP. Extrac
 
 Compatible parser: Brresviewer
 
+### CASMDA
+
+Header: `57 E0 E0 57`
+
+Description: Archive for Xenoblade X map data. Related files include CANVDA, CANVHE, and CASMHD, although minimal research has been done on them.
+
+Compatible parser: Xenomax[3ds Max Plugin]
+
+### HKX
+
+Header: `57 E0 E0 57`
+
+Description: Collision data for Xenoblade X maps. Little research has been done.
+
+Compatible parser: N/A
+
 ## Video/Audio
 
 ### WEBM
@@ -220,7 +260,15 @@ Compatible parser: ffmpeg
 
 Header: `80 00 00 24`
 
-Description: Primary audio format for XC1(Wii).
+Description: Primary audio format for XC1(Wii) and XCX.
+
+Compatible parser: Foobar Vgmstream Plugin
+
+### ACB
+
+Header: `40 55 54 46`
+
+Description: Primary audio archive for XCX. Similar to BNK.
 
 Compatible parser: Foobar Vgmstream Plugin
 
