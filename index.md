@@ -6,8 +6,10 @@ header:
   overlay_filter: "0.5"
   overlay_image: /assets/images/splash-xc3.png
   actions:
-    - label: "Get Started"
+    - label: "Get Started (WIP)"
       url: "/get-started"
+    - label: "See All Guides"
+      url: "/posts"
 excerpt: "The definitive Xeno-series reverse engineering technical documentations. Everything ranging from asset documentations and how-tos."
 ---
 
