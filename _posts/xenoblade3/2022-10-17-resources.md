@@ -11,7 +11,7 @@ tags:
 ---
 
 {: .notice--info}
-This page serves as a master page for links to third-party Xenoblade-3-related resources.
+**Reyn, you're a lifesafer!** This page serves as a master page for links to third-party Xenoblade-3-related resources.
 
 ## Tools
 

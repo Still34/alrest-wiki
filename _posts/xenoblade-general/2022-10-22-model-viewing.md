@@ -15,7 +15,7 @@ toc: true
 This page assumes you have already dumped and extracted all of the files from your copy of the supported Xenoblade game(s).
 
 {: .notice--danger}
-Animation for Xenoblade 3 is currently not supported and cannot be re-exported to a different format.
+**This one lookin' at me funny!** Animation for Xenoblade 3 is currently not supported and cannot be re-exported to a different format.
 
 ## What You Need
 
