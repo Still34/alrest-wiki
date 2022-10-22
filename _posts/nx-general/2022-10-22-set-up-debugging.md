@@ -25,15 +25,13 @@ toc: true
 ### Section I - Enable Switch GDB Stub via Atmosphere
 
 1. Navigate to `atmosphere/config/` under the console's SD card. If the directory does not exist, create one if necessary.
-2. Create or modify the file `system_settings.ini` and insert the following,
-
+1. Create or modify the file `system_settings.ini` and insert the following,
 ```ini
 [atmosphere]
 enable_htc = u8!0x0
 enable_standalone_gdbstub = u8!0x1
 ```
-
-3. Reboot the system.
+1. Reboot the system.
 
 ### Section II - Connecting to the Switch via IDA's Debugger
 
