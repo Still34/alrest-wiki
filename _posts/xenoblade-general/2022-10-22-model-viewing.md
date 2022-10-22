@@ -9,6 +9,11 @@ tags:
   - Textures
 permalink: /xenoblade-model-viewing
 toc: true
+header:
+  overlay_color: "#000"
+  overlay_filter: "0.5"
+  overlay_image: /assets/images/splash-noesis.png
+excerpt: "Viewing and exporting Xenoblade models using Noesis."
 ---
 
 {: .notice--info}
