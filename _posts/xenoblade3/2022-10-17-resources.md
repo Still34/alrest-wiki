@@ -17,6 +17,12 @@ This page serves as a master page for links to third-party Xenoblade-3-related r
 
 - [XenoLib](https://github.com/PredatorCZ/XenoLib)
     - A C++-based Xenoblade format parser and converter. This library is able to handle most files from Xenoblade 3, including unpacking ARD files, model and texture dumping, and more.
+- [Noesis](https://www.richwhitehouse.com/index.php?content=inc_projects.php&showproject=91)
+    - Noesis is a tool for previewing and converting between hundreds of model, image, and animation formats.
+    - Noesis out of the box does not necessarily support Xenoblade model formats. See [Xenoblade-Switch-Model-Importer-Noesis] instead.
+- [Xenoblade-Switch-Model-Importer-Noesis](https://github.com/Turk645/Xenoblade-Switch-Model-Importer-Noesis)
+    - A Python-based Noesis-specific script that adds support for the [WISMT](/files#wismt) format that several Xenoblade games use.
+    - See [Viewing and Exporting Xenoblade Models](/xenoblade-model-viewing) for more information.
 
 ## Spreadsheet
 
