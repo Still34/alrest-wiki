@@ -124,7 +124,7 @@ Compatible parser: N/A
 
 ### WISMT
 
-Header: N/A (Typically compressed XBC1 objects)
+Header: N/A (see [XBC1](#xbc1))
 
 Description: Proprietary model format. This file format may contain raw mesh data, textures, and shader code. Typically associated with [WIMDO](#wimdo).
 
@@ -152,7 +152,7 @@ Header: `62 72 65 73`
 
 Description: Primary model container for characters, NPCs, and enemeis in XC1(Wii).
 
-Compatible parser: Brawlcrate/Brresviewer
+Compatible parser: [BrawlCrate]/[BRRESViewer]
 
 ### MCA
 
@@ -160,7 +160,7 @@ Header: `6D 63 61 00`
 
 Description: Contains animations for characters, NPCs, and enemeis in XC1(Wii).
 
-Compatible parser: Brresviewer
+Compatible parser: [BRRESViewer]
 
 ### KYP
 
@@ -168,7 +168,7 @@ Header: `4B 59 50 00`
 
 Description: Contains both models and animations for characters, NPCs, and enemeis in XC1(Wii).
 
-Compatible parser: Brresviewer
+Compatible parser: [BRRESViewer]
 
 ### CAMDO
 
@@ -176,7 +176,7 @@ Header: `4D 58 4D 44`
 
 Description: Primary model format for Xenoblade X. Related to CASMT.
 
-Compatible parser: Xenomax[3ds Max Script]
+Compatible parser: [XenoMax]
 
 ### CASMT
 
@@ -184,7 +184,7 @@ Header: `N/A`
 
 Description: Primary model format for Xenoblade X. Related to CAMDO.
 
-Compatible parser: Xenomax[3ds Max Script]
+Compatible parser: [XenoMax]
 
 ### ATTRANIM
 
@@ -248,7 +248,7 @@ Header: `62 72 65 73`
 Description: Contains base map objects for XC1(Wii). Resides inside DAP archives.
 Other related files(albeit unexplored) include ID, LGT, MPF, OCC, and KP. Extracted from DAP.
 
-Compatible parser: Brresviewer
+Compatible parser: [BRRESViewer]
 
 ### CASMDA
 
@@ -256,7 +256,7 @@ Header: `57 E0 E0 57`
 
 Description: Archive for Xenoblade X map data. Related files include CANVDA, CANVHE, and CASMHD, although minimal research has been done on them.
 
-Compatible parser: Xenomax[3ds Max Plugin]
+Compatible parser: [XenoMax]
 
 ### HKX
 
@@ -274,7 +274,7 @@ Header: `1A 45 DF A3`
 
 Description: Open-source WebM audiovisual container file format. In Xenoblade's case, these typically hold pre-rendered cutscenes in a VP9 video stream and may also contain an optional Vorbis audio stream that does not hold any data (as the audio is played separately from Wwise).
 
-Compatible parser: ffmpeg
+Compatible parser: [ffmpeg]
 
 ### ADX
 
@@ -282,7 +282,7 @@ Header: `80 00 00 24`
 
 Description: Primary audio format for XC1(Wii) and XCX.
 
-Compatible parser: Foobar Vgmstream Plugin
+Compatible parser: [vgmstream]
 
 ### ACB
 
@@ -290,7 +290,7 @@ Header: `40 55 54 46`
 
 Description: Primary audio archive for XCX. Similar to BNK.
 
-Compatible parser: Foobar Vgmstream Plugin
+Compatible parser: [vgmstream]
 
 ### WEM
 
@@ -354,3 +354,8 @@ Compatible parser: Foobar Vgmstream Plugin
 
 [XenoLib]: https://github.com/PredatorCZ/XenoLib
 [XbTool]: https://github.com/Thealexbarney/XbTool
+[BRRESViewer]: https://gamebanana.com/tools/6293
+[BrawlCrate]: https://github.com/soopercool101/BrawlCrate
+[XenoMax]: https://github.com/PredatorCZ/XenoMax
+[vgmstream]: https://vgmstream.org/
+[ffmpeg]: https://ffmpeg.org/
