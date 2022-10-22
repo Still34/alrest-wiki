@@ -84,6 +84,26 @@ Description: Primary archive for Xenoblade X.
 
 Compatible parser: [Custom BMS script]
 
+### XBC1
+
+Header: `xbc1` (`78 62 63 31`)
+
+Description: An all-purpose compression format that several other Xenoblade formats depend on. In most cases, the underlying compression format is zlib, though this may occasionally differ in rare instances, such as zstandard in some ARD files.
+
+Structure:
+
+| Offset | Size    | Description       |
+|--------|---------|-------------------|
+| 0x00   | 0x04    | XBC1 magic        |
+| 0x04   | 0x04    | Compression type  |
+| 0x08   | 0x04    | Uncompressed size |
+| 0x0C   | 0x04    | Compressed size   |
+| 0x10   | 0x04    | Unknown           |
+| 0x14   | 0x1C    | Filename          |
+| 0x30   | Dynamic | Compressed data   |
+
+Compatible parser: N/A
+
 ## Models/Animations/Textures
 
 ### BEH
