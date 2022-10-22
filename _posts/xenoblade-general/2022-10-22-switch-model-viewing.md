@@ -62,6 +62,9 @@ Your Noesis is now ready for importing/exporting Xenoblade models. Each of the o
 
 1. Navigate to the desired character model within Noesis.
     - The model should have an extension of [WISMT](/files#wismt).
+1. Select `Tool` > `Xenoblade Switch` > `Skeleton Override` and enter the corresponding chr name for the model.
+    - For Xenoblade 3, this should be the closest matching chr filename ending with `0`, e.g., `ch01011183` > `ch01011180`. Check your `chr` folder to make sure the corresponding file exists.
+    - For Xenoblade DE, this should be the closest matching chr filename ending with `0000`, e.g., `pc010109` -> `pc010000`. Check your `chr` folder to make sure the corresponding file exists.
 1. Double click on the filename or right-click and click on `Open`.
     - The model should now be properly rendered on the right hand side. If the texture or model appear malformed, the extracted file(s) may be corrupt. This may happen due to bad ARH extraction scripts.
 1. To export the model into a wider-known format, go to `File` > `Export`.
