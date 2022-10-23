@@ -22,7 +22,7 @@ published: false
 This page assumes you have already dumped and extracted all of the files from your copy of the supported Xenoblade game(s).
 
 {: .notice--warning}
-This guide is for Xenoblade titles released on the Nintendo Switch, which means this guide only applies to Xenoblade Definitive Edition, Xenoblade 2, and Xenoblade 3.
+This guide is for Xenoblade title(s) released on the Nintendo Switch, which means this guide only applies to Xenoblade Definitive Edition, Xenoblade 2, and Xenoblade 3.
 
 {: .notice--danger}
 **This one lookin' at me funny!** Animation for Xenoblade 3 is currently not supported and cannot be re-exported to a different format.

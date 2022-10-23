@@ -13,6 +13,12 @@ excerpt: "Viewing and exporting models from Xenoblade X (Wii U)."
 published: false
 ---
 
+{: .notice--info}
+This page assumes you have already dumped and extracted all of the files from your copy of the supported Xenoblade game(s).
+
+{: .notice--warning}
+This guide is for Xenoblade title(s) released on the Nintendo Wii U, which means this guide only applies to Xenoblade X.
+
 Importing Xenoblade X models
 You need 3ds Max to extract X models.
 Xenomax for maps[https://github.com/PredatorCZ/XenoMax]
