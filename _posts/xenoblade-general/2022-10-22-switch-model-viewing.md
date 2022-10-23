@@ -1,5 +1,5 @@
 ---
-title: "Viewing and Exporting Xenoblade Models (DE/2/3)"
+title: "Viewing and Exporting Xenoblade Models (Switch)"
 categories:
   - xenoblade-general
 tags:
@@ -14,7 +14,7 @@ header:
   overlay_color: "#000"
   overlay_filter: "0.5"
   overlay_image: /assets/images/splash-noesis.png
-excerpt: "Viewing and exporting Xenoblade DE/2/3 models using Noesis."
+excerpt: "Viewing and exporting models from Xenoblade DE/2/3 using Noesis."
 published: false
 ---
 
