@@ -1,0 +1,943 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://alrest.wiki/feed.xml" rel="self" type="application/atom+xml" /><link href="https://alrest.wiki/" rel="alternate" type="text/html" /><updated>2022-10-23T00:33:10+00:00</updated><id>https://alrest.wiki/feed.xml</id><title type="html">Alrest Wiki</title><subtitle>Your definitive guide to reverse engineering the Xeno series of games.</subtitle><author><name>Alrest Wiki Community</name></author><entry><title type="html">Setting up Nintendo Switch for Remote Debugging (IDA Pro)</title><link href="https://alrest.wiki/nx-debug-setup-ida-pro" rel="alternate" type="text/html" title="Setting up Nintendo Switch for Remote Debugging (IDA Pro)" /><published>2022-10-22T00:00:00+00:00</published><updated>2022-10-22T00:00:00+00:00</updated><id>https://alrest.wiki/set-up-debugging</id><content type="html" xml:base="https://alrest.wiki/nx-debug-setup-ida-pro"><![CDATA[<p class="notice--warning"><strong>Think you can take me!?</strong> This guide assumes the reader has decent knowledge of reverse engineering and low-level debugging and requires the use of a modded Nintendo Switch.</p>
+
+<h2 id="what-you-need">What You Need</h2>
+
+<ul>
+  <li>The latest version of IDA Pro</li>
+  <li>The latest version of Atmosphere</li>
+</ul>
+
+<h2 id="instructions">Instructions</h2>
+
+<h3 id="section-i---enable-switch-gdb-stub-via-atmosphere">Section I - Enable Switch GDB Stub via Atmosphere</h3>
+
+<ol>
+  <li>Navigate to <code class="language-plaintext highlighter-rouge">atmosphere/config/</code> under the console’s SD card. If the directory does not exist, create one if necessary.</li>
+  <li>Create or modify the file <code class="language-plaintext highlighter-rouge">system_settings.ini</code> and insert the following,
+    <div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[atmosphere]</span>
+<span class="py">enable_htc</span> <span class="p">=</span> <span class="s">u8!0x0</span>
+<span class="py">enable_standalone_gdbstub</span> <span class="p">=</span> <span class="s">u8!0x1</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Reboot the system.</li>
+</ol>
+
+<h3 id="section-ii---connecting-to-the-switch-via-idas-debugger">Section II - Connecting to the Switch via IDA’s Debugger</h3>
+
+<p class="notice--info">If you plan on using the debugging feature more in the future, consider registering a static IP for your console via your DHCP server.</p>
+
+<ol>
+  <li>Connect the Nintendo Switch under the same network as your computer.</li>
+  <li>Make note of the console’s IP address via <code class="language-plaintext highlighter-rouge">System Settings</code> -&gt; <code class="language-plaintext highlighter-rouge">Internet</code> -&gt; <code class="language-plaintext highlighter-rouge">IP address</code>.</li>
+  <li>Launch the game you wish to debug.</li>
+  <li>Open up IDA Pro (64-bit).</li>
+  <li>Select <code class="language-plaintext highlighter-rouge">Debugger</code> -&gt; <code class="language-plaintext highlighter-rouge">Attach</code> -&gt; <code class="language-plaintext highlighter-rouge">Remote GDB Debugger</code></li>
+  <li>Enter your console’s IP address in the <code class="language-plaintext highlighter-rouge">Hostname</code> field with the port <code class="language-plaintext highlighter-rouge">22225</code>.</li>
+  <li>Open <code class="language-plaintext highlighter-rouge">Debug Settings</code></li>
+  <li>(Optional) Check all relevant boxes under the Logging section for more information during the debugging session.</li>
+  <li>(Optional) Check <code class="language-plaintext highlighter-rouge">Suspend on debugging start</code> so that the game freezes when the debugger has successfully attached.</li>
+  <li>Select <code class="language-plaintext highlighter-rouge">Set Specific Options</code></li>
+  <li>Change the dropdown menu option <code class="language-plaintext highlighter-rouge">Configuration</code> from the default to <code class="language-plaintext highlighter-rouge">ARM64 (AArch64)</code> (if appliciable).</li>
+  <li>Press <code class="language-plaintext highlighter-rouge">OK</code> all the way through.</li>
+  <li>A new menu should now appear, asking you which system process on the Switch to debug. Scroll down and select <code class="language-plaintext highlighter-rouge">Application</code>; this will be the game the Switch is currently running.</li>
+  <li>Press <code class="language-plaintext highlighter-rouge">OK</code>.</li>
+  <li>IDA should now be attached to the remote process.</li>
+</ol>]]></content><author><name>Alrest Wiki Community</name></author><category term="nx-general" /><category term="Resources" /><category term="Nintendo Switch" /><category term="Debugging" /><category term="Reverse engineering" /><summary type="html"><![CDATA[Think you can take me!? This guide assumes the reader has decent knowledge of reverse engineering and low-level debugging and requires the use of a modded Nintendo Switch.]]></summary></entry><entry><title type="html">Hashes of Known Xeno Games</title><link href="https://alrest.wiki/hashes" rel="alternate" type="text/html" title="Hashes of Known Xeno Games" /><published>2022-10-18T00:00:00+00:00</published><updated>2022-10-18T00:00:00+00:00</updated><id>https://alrest.wiki/hashes</id><content type="html" xml:base="https://alrest.wiki/hashes"><![CDATA[<p class="notice--info">This page contains hashes of the relevant game executable and dumps. This information may be used to validate your dump of the game. This page should be a direct parity to the dumps found on No-Intro and Redump, along with additional hashes such as their main executables if applicable.</p>
+
+<h2 id="xenogears">Xenogears</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title ID</th>
+      <th>Barcode</th>
+      <th>CRC-32</th>
+      <th>MD5</th>
+      <th>SHA-1</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SLPS 01160, SLPS 02775, SLPS 91436</td>
+      <td>4 961012 007264, 4 961012 017027, 4 961012 977147</td>
+      <td><code class="language-plaintext highlighter-rouge">92549bb8</code></td>
+      <td><code class="language-plaintext highlighter-rouge">9494680ee2684c48d85ad117b01a7d66</code></td>
+      <td><code class="language-plaintext highlighter-rouge">8316b32b0f6a45897b78cc07c0968b9845ed387e</code></td>
+      <td>Disc 1</td>
+    </tr>
+    <tr>
+      <td>SLPS 01161, SLPS 02776</td>
+      <td>4 961012 007264, 4 961012 977147</td>
+      <td><code class="language-plaintext highlighter-rouge">b7c85c70</code></td>
+      <td><code class="language-plaintext highlighter-rouge">5dd1e0df1877a640c7e32e8ce49fb014</code></td>
+      <td><code class="language-plaintext highlighter-rouge">91e09a2c7ebcd27a2985b49d0bb896bb7501dcde</code></td>
+      <td>Disc 2</td>
+    </tr>
+    <tr>
+      <td>SLUS-00664, SLUS-00664GH</td>
+      <td>6 62248 99802 2</td>
+      <td><code class="language-plaintext highlighter-rouge">c75e45ff</code></td>
+      <td><code class="language-plaintext highlighter-rouge">110ece1c6b0fdcd443df340fa7db30f4</code></td>
+      <td><code class="language-plaintext highlighter-rouge">12db8ccb93516c391630f046a143762337cc21f4</code></td>
+      <td>Disc 1</td>
+    </tr>
+    <tr>
+      <td>SLUS-00669, SLUS-00669GH</td>
+      <td>6 62248 99802 2</td>
+      <td><code class="language-plaintext highlighter-rouge">0e89ebf6</code></td>
+      <td><code class="language-plaintext highlighter-rouge">f942f416066a6473226b21a1504416f3</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0a4c56e6c64db11f8eada43545c2af08e948665c</code></td>
+      <td>Disc 2</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="xenosaga-i">Xenosaga I</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title ID</th>
+      <th>Barcode</th>
+      <th>CRC-32</th>
+      <th>MD5</th>
+      <th>SHA-1</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SLPS 29001</td>
+      <td>4 907892 015142</td>
+      <td><code class="language-plaintext highlighter-rouge">380bf6d2</code></td>
+      <td><code class="language-plaintext highlighter-rouge">7300de835655d91451638c0b988f92d8</code></td>
+      <td><code class="language-plaintext highlighter-rouge">e1588a58e1e47361e1382bd7c301c13bb71b4199</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>SLPS 29002, SLPS 73901</td>
+      <td>4 907892 015135, 4 907892 015418</td>
+      <td><code class="language-plaintext highlighter-rouge">508423b4</code></td>
+      <td><code class="language-plaintext highlighter-rouge">aafb7923c5990b2fe93d7793b3794fa1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">b5b369ebd3b9030fe0bc3dea3ba08f8df7f8c237</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>SLPS 29005</td>
+      <td>4 907892 015470</td>
+      <td><code class="language-plaintext highlighter-rouge">2815d082</code></td>
+      <td><code class="language-plaintext highlighter-rouge">72fcc94ffe844ba7f9ead2d48c9575a2</code></td>
+      <td><code class="language-plaintext highlighter-rouge">8d0b2a84f27f54247981877d130aa573bf558d09</code></td>
+      <td>Reloaded Edition</td>
+    </tr>
+    <tr>
+      <td>SLUS 20469</td>
+      <td>7 22674 02136 4</td>
+      <td><code class="language-plaintext highlighter-rouge">3d9843e9</code></td>
+      <td><code class="language-plaintext highlighter-rouge">542ecb80b46c710664d3c9eb1547692e</code></td>
+      <td><code class="language-plaintext highlighter-rouge">a332b6fc32be58a20751049a2d78ef8a6ef83b2a</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="xenosaga-ii">Xenosaga II</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title ID</th>
+      <th>Barcode</th>
+      <th>CRC-32</th>
+      <th>MD5</th>
+      <th>SHA-1</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SCES-82034</td>
+      <td>7 11719 19241 1, 7 11719 19271 8, 7 11719 19281 7</td>
+      <td><code class="language-plaintext highlighter-rouge">ba13263f</code></td>
+      <td><code class="language-plaintext highlighter-rouge">c447be23faf8cb36b52425377c7e2467</code></td>
+      <td><code class="language-plaintext highlighter-rouge">bcf524d9ad1bb6ae0c53e7fc1fbaf07219713c55</code></td>
+      <td>Disc 1</td>
+    </tr>
+    <tr>
+      <td>SCES-82035</td>
+      <td>7 11719 19241 1, 7 11719 19271 8, 7 11719 19281 7</td>
+      <td><code class="language-plaintext highlighter-rouge">9ed848a2</code></td>
+      <td><code class="language-plaintext highlighter-rouge">e0a22264c31ac87d0fcf8646f14e1ce7</code></td>
+      <td><code class="language-plaintext highlighter-rouge">b74a7f1bc3ba5b384cad7e84007469a33825a8bd</code></td>
+      <td>Disc 2</td>
+    </tr>
+    <tr>
+      <td>SLPS 25366</td>
+      <td>4 907892 015623</td>
+      <td><code class="language-plaintext highlighter-rouge">14bf5cba</code></td>
+      <td><code class="language-plaintext highlighter-rouge">5dd6368b9a8f4a0b0c3d87661e273686</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ac5f547d024bd354f38f89317dc8f6a4c38764c1</code></td>
+      <td>Disc 1</td>
+    </tr>
+    <tr>
+      <td>SLPS 25367</td>
+      <td>4 907892 015623</td>
+      <td><code class="language-plaintext highlighter-rouge">b79db12f</code></td>
+      <td><code class="language-plaintext highlighter-rouge">52399d7ed1e173a39edcf6653a133698</code></td>
+      <td><code class="language-plaintext highlighter-rouge">71920940a9c17b6ad26bcbb5c0f7b2bd87c33203</code></td>
+      <td>Disc 2</td>
+    </tr>
+    <tr>
+      <td>SCAJ 20086, SLPS 25368</td>
+      <td>4 907892 015616, 4 948872 450959</td>
+      <td><code class="language-plaintext highlighter-rouge">398eaef1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">f076641640bfe8f84cbb35f2a5f74953</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ca195f89c8100cd455601bc11ad9f81eecf6d1ab</code></td>
+      <td>Disc 1</td>
+    </tr>
+    <tr>
+      <td>SCAJ 20087, SLPS 25369</td>
+      <td>4 907892 015616, 4 948872 450959</td>
+      <td><code class="language-plaintext highlighter-rouge">0f55c58f</code></td>
+      <td><code class="language-plaintext highlighter-rouge">38d1253eca4e17f3beacf39ff58e5c81</code></td>
+      <td><code class="language-plaintext highlighter-rouge">9534332b6dd308d50ad5892bbc9beda8602dcecf</code></td>
+      <td>Disc 2</td>
+    </tr>
+    <tr>
+      <td>SLUS 20892</td>
+      <td>7 22674 10017 5</td>
+      <td><code class="language-plaintext highlighter-rouge">d7485a6c</code></td>
+      <td><code class="language-plaintext highlighter-rouge">8bec06b6b498e05dc645cea34e0a2ff0</code></td>
+      <td><code class="language-plaintext highlighter-rouge">f929de70be5ba300ba7dba5e4c45ed9e91eac784</code></td>
+      <td>Disc 1</td>
+    </tr>
+    <tr>
+      <td>SLUS 21133</td>
+      <td>7 22674 10017 5</td>
+      <td><code class="language-plaintext highlighter-rouge">7ea27985</code></td>
+      <td><code class="language-plaintext highlighter-rouge">27830a7b49ce75f07ab450ad4922de8a</code></td>
+      <td><code class="language-plaintext highlighter-rouge">46e7bcf7ce8918ce4449cb7541ef4e619fb4a99e</code></td>
+      <td>Disc 2</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="xenosaga-iii">Xenosaga III</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title ID</th>
+      <th>Barcode</th>
+      <th>CRC-32</th>
+      <th>MD5</th>
+      <th>SHA-1</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SLPM 61147</td>
+      <td>#N/A</td>
+      <td><code class="language-plaintext highlighter-rouge">9eddd09a</code></td>
+      <td><code class="language-plaintext highlighter-rouge">e73bc128f4028123dfb2bbbc9dc06fee</code></td>
+      <td><code class="language-plaintext highlighter-rouge">3283235f151f5a68dc0cf981f8c1c0f125666ed0</code></td>
+      <td>Demo</td>
+    </tr>
+    <tr>
+      <td>SLPS 25640</td>
+      <td>4 582224 496020</td>
+      <td><code class="language-plaintext highlighter-rouge">10754b23</code></td>
+      <td><code class="language-plaintext highlighter-rouge">743583c4bd92644c1b7c38b419da610f</code></td>
+      <td><code class="language-plaintext highlighter-rouge">9fba45d7e2a3e8035dc4ad11c6732783a68d3cae</code></td>
+      <td>Disc 1</td>
+    </tr>
+    <tr>
+      <td>SLPS 25641</td>
+      <td>4 582224 496020</td>
+      <td><code class="language-plaintext highlighter-rouge">ae733db6</code></td>
+      <td><code class="language-plaintext highlighter-rouge">7db9a76a543994afe0f810bc6edb9b2c</code></td>
+      <td><code class="language-plaintext highlighter-rouge">37ad169f4df4f5d9a59a2050644227ffc8f60243</code></td>
+      <td>Disc 2</td>
+    </tr>
+    <tr>
+      <td>SLUS 21389</td>
+      <td>7 22674 10055 7</td>
+      <td><code class="language-plaintext highlighter-rouge">cfd0d722</code></td>
+      <td><code class="language-plaintext highlighter-rouge">a1fa0f0388b19220cb1115c998600586</code></td>
+      <td><code class="language-plaintext highlighter-rouge">30a887e6942cef57099bc9c84de5b39974e62f9a</code></td>
+      <td>Disc 1</td>
+    </tr>
+    <tr>
+      <td>SLUS 21417</td>
+      <td>7 22674 10055 7</td>
+      <td><code class="language-plaintext highlighter-rouge">1855b442</code></td>
+      <td><code class="language-plaintext highlighter-rouge">3bdd9a387aa259d11f39d81158b1972d</code></td>
+      <td><code class="language-plaintext highlighter-rouge">9902a798f2f4a7d7a4af6078ec3e5ec5107d5450</code></td>
+      <td>Disc 2</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="xenoblade-1">Xenoblade 1</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title ID</th>
+      <th>Barcode</th>
+      <th>CRC-32</th>
+      <th>MD5</th>
+      <th>SHA-1</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RVL-SX4J-JPN-B0</td>
+      <td>4 902370 518245</td>
+      <td><code class="language-plaintext highlighter-rouge">1ad204ff</code></td>
+      <td><code class="language-plaintext highlighter-rouge">e0784dfb12830f5e77b61935dde3db48</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1eb3ab8ce62690604d3242da2092f2b9de10b6fd</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>RVL-SX4P-EUR-E0</td>
+      <td>0 45496 40023 1, 0 45496 40025 5</td>
+      <td><code class="language-plaintext highlighter-rouge">96abeb7c</code></td>
+      <td><code class="language-plaintext highlighter-rouge">7a8ab73269be9a81a8fac07d2e9c5edb</code></td>
+      <td><code class="language-plaintext highlighter-rouge">d4ba488ebeb4338331b584ba36208559b029bad5</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>RVL-SX4E-MDE-E0, RVL-SX4E-USA-E0</td>
+      <td>0 45496 90285 8 00100</td>
+      <td><code class="language-plaintext highlighter-rouge">472ffed2</code></td>
+      <td><code class="language-plaintext highlighter-rouge">f76e76b2656b92490df354e7a757257b</code></td>
+      <td><code class="language-plaintext highlighter-rouge">5c7a23d87af7d736226f4795ebf10b6f428f67c9</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="xenoblade-x">Xenoblade X</h2>
+
+<h2 id="xenoblade-definitive-edition">Xenoblade Definitive Edition</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title ID</th>
+      <th>Cartridge ID</th>
+      <th>Filetype</th>
+      <th>MD5</th>
+      <th>SHA-1</th>
+      <th>SHA-256</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0100FF500E34A000</td>
+      <td>LA-H-AUBQA</td>
+      <td>XCI</td>
+      <td><code class="language-plaintext highlighter-rouge">61144b1edf796367e684e9ce390837a1</code></td>
+      <td><code class="language-plaintext highlighter-rouge">97dbc6daf9a94632ad2909d9ccc72fd749a15e8e</code></td>
+      <td><code class="language-plaintext highlighter-rouge">f107c07873a2dc9672a848a8a34acb3e84ef1bd5b8b5b42e1a12ba4da7947072</code></td>
+      <td>Rev0 physical cartridge dump</td>
+    </tr>
+    <tr>
+      <td>0100FF500E34A000</td>
+      <td>LA-H-AUBQA</td>
+      <td>XCI</td>
+      <td><code class="language-plaintext highlighter-rouge">6512f450159dac3bd18678d0c614103f</code></td>
+      <td><code class="language-plaintext highlighter-rouge">29a17d1d8a74fe40a5f1405d1e2e5e5220812cd6</code></td>
+      <td><code class="language-plaintext highlighter-rouge">808b488f1e58a999849f03eec859f40741b0b7d1add11289a11fc8034c2347a3</code></td>
+      <td>Rev1 physical cartridge dump</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="xenoblade-2">Xenoblade 2</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title ID</th>
+      <th>Cartridge ID</th>
+      <th>Filetype</th>
+      <th>MD5</th>
+      <th>SHA-1</th>
+      <th>SHA-256</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0100E95004038000</td>
+      <td>LA-H-ADENB</td>
+      <td>XCI</td>
+      <td><code class="language-plaintext highlighter-rouge">b77861ab44fd4898f61184b1fcd849f5</code></td>
+      <td><code class="language-plaintext highlighter-rouge">f9f1ea96a49d4a867a3634a24440d14aeb3248c8</code></td>
+      <td>#N/A</td>
+      <td>Rev0 physical cartridge dump</td>
+    </tr>
+    <tr>
+      <td>0100E95004038000</td>
+      <td>LA-H-ADENB</td>
+      <td>XCI</td>
+      <td><code class="language-plaintext highlighter-rouge">93834436209492bca24e617308296cbd</code></td>
+      <td><code class="language-plaintext highlighter-rouge">3ab321ff2be7c8ebe784ad8d2786356314bd1597</code></td>
+      <td><code class="language-plaintext highlighter-rouge">6d4386c160f7c78f1f9d472883dfa5f293eaa931bf4b45e1b0c39362c8bbedc3</code></td>
+      <td>Rev3 physical cartridge dump</td>
+    </tr>
+    <tr>
+      <td>0100E95004038000</td>
+      <td>LA-H-ADENB</td>
+      <td>XCI</td>
+      <td><code class="language-plaintext highlighter-rouge">03e78da0782771d637476fa54cad0772</code></td>
+      <td><code class="language-plaintext highlighter-rouge">c5854f22f3ff7c4eee33361e6a54e6643a818a06</code></td>
+      <td>#N/A</td>
+      <td>Rev5 physical cartridge dump</td>
+    </tr>
+    <tr>
+      <td>0100F3400332C000</td>
+      <td>LA-H-ADENA</td>
+      <td>XCI</td>
+      <td><code class="language-plaintext highlighter-rouge">5a44454ce9c5b4744a321728e8e9d658</code></td>
+      <td><code class="language-plaintext highlighter-rouge">7e20edf12bdd5f72fe3a47208b50f442a2fac997</code></td>
+      <td><code class="language-plaintext highlighter-rouge">c64e2064b2ac7eedaf956fab5c124cf40fe1f3e6a010e10fad5f5236f0bbe6cd</code></td>
+      <td>Rev5 physical cartridge dump</td>
+    </tr>
+    <tr>
+      <td>0100F3400332C000</td>
+      <td>LA-H-ADENA</td>
+      <td>main</td>
+      <td><code class="language-plaintext highlighter-rouge">9358bb345404d62e755c7da56be975aa</code></td>
+      <td><code class="language-plaintext highlighter-rouge">2602d398563af7dfeb62242a0ca7a8d1c1566dc2</code></td>
+      <td><code class="language-plaintext highlighter-rouge">4b403b3009b6f049e0d69eced7b1d99c71e6a4e65292616cdc381ab1a70c028d</code></td>
+      <td>Main executable</td>
+    </tr>
+    <tr>
+      <td>0100F3400332C000</td>
+      <td>LA-H-ADENA</td>
+      <td>main.npdm</td>
+      <td><code class="language-plaintext highlighter-rouge">437b9dea0591d7a98fb30014b63a2303</code></td>
+      <td><code class="language-plaintext highlighter-rouge">0ad2776b5413121297915749ba13715e737b432c</code></td>
+      <td><code class="language-plaintext highlighter-rouge">6710a2c160b5be03f223d80c694fd7dc352b261a83c813dc3af911d41467cceb</code></td>
+      <td>Main executable extended header</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="xenoblade-2-torna">Xenoblade 2 Torna</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title ID</th>
+      <th>Cartridge ID</th>
+      <th>Filetype</th>
+      <th>MD5</th>
+      <th>SHA-1</th>
+      <th>SHA-256</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0100C9F009F7A000</td>
+      <td>LA-H-ANVZA</td>
+      <td>XCI</td>
+      <td><code class="language-plaintext highlighter-rouge">4082333feac96973d63012dd0a580fbb</code></td>
+      <td><code class="language-plaintext highlighter-rouge">6b5dedb1f210f5a0362011a0d470007259b8e796</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1fde9112cbfd5002ee179356f69d6c76215e05fc2234a63a64a32796852073f1</code></td>
+      <td>Rev0 physical cartridge dump</td>
+    </tr>
+    <tr>
+      <td>0100C9F009F7A000</td>
+      <td>LA-H-ANVZA</td>
+      <td>XCI</td>
+      <td><code class="language-plaintext highlighter-rouge">4bd0c2685fa26ef069304ed0b5bb386f</code></td>
+      <td><code class="language-plaintext highlighter-rouge">4ecfc919f7788f9b0c6be5a253f4ac538273fc16</code></td>
+      <td>#N/A</td>
+      <td>Rev1 physical cartridge dump</td>
+    </tr>
+    <tr>
+      <td>0100C9F009F7A000</td>
+      <td>#N/A</td>
+      <td>main</td>
+      <td><code class="language-plaintext highlighter-rouge">aa130d6dc681eef677248449d6baca00</code></td>
+      <td><code class="language-plaintext highlighter-rouge">cd5575786bc18aaf99b22485c5ba2b11f83cf77c</code></td>
+      <td><code class="language-plaintext highlighter-rouge">3b271b945557ed0049abe7e63dfbb6267b02ad185f69f7e3d35f22c8319d276d</code></td>
+      <td>Main exectuable</td>
+    </tr>
+    <tr>
+      <td>0100C9F009F7A000</td>
+      <td>#N/A</td>
+      <td>main.npdm</td>
+      <td><code class="language-plaintext highlighter-rouge">6b47e15e41a6c2af149634197c811e37</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1fad6398428c3c7551a9230e3fbe8a1baf9a1794</code></td>
+      <td><code class="language-plaintext highlighter-rouge">4ce5f4b14eeece8933612d6f5aff0fbf99f4b9a35fbf9cc8e70c545bcb1e318e</code></td>
+      <td>Main exectuable extended header</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="xenoblade-3">Xenoblade 3</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title ID</th>
+      <th>Cartridge ID</th>
+      <th>Filetype</th>
+      <th>MD5</th>
+      <th>SHA-1</th>
+      <th>SHA-256</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>010074F013262000</td>
+      <td>#N/A</td>
+      <td>main</td>
+      <td><code class="language-plaintext highlighter-rouge">aa7afd9ba109f58c307a51d2fadbb521</code></td>
+      <td><code class="language-plaintext highlighter-rouge">a52ef6c3d821904f8233194345c0d2c222ecdcff</code></td>
+      <td><code class="language-plaintext highlighter-rouge">5c5784a2c42e6317d8ee816561e521a0475485d10e54b3584e686cf00b5b60c5</code></td>
+      <td>Main executable</td>
+    </tr>
+    <tr>
+      <td>010074F013262000</td>
+      <td>#N/A</td>
+      <td>main.npdm</td>
+      <td><code class="language-plaintext highlighter-rouge">d3f8885029cabf1270390274832de316</code></td>
+      <td><code class="language-plaintext highlighter-rouge">9fa9d392fcdada2a4988adf16ec9096ccddba3e9</code></td>
+      <td><code class="language-plaintext highlighter-rouge">30935d8cfa286cc1d0dbf5e027dfe491f7974c6f8fbf56d143200633686cb818</code></td>
+      <td>Main executable extended header</td>
+    </tr>
+    <tr>
+      <td>010074F013262000</td>
+      <td>LA-H-AZ3HA</td>
+      <td>XCI</td>
+      <td><code class="language-plaintext highlighter-rouge">a49b1c7a22bd9bf5bbcc541001b5bd9f</code></td>
+      <td><code class="language-plaintext highlighter-rouge">b55bd3a93404b5f3f9bc4cdfaf0b35a9cd02fdd8</code></td>
+      <td><code class="language-plaintext highlighter-rouge">73b68c2c0112edc43ccb0851942f8e27f9c38af5fd13da1d1b96f70a504427cb</code></td>
+      <td>Rev0 physical cartridge dump</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name>Alrest Wiki Community</name></author><category term="xeno-general" /><category term="Resources" /><category term="Xenoblade (Series)" /><category term="Xenogears" /><category term="Xenosaga (Series)" /><summary type="html"><![CDATA[List of hashes of known Xeno game builds.]]></summary></entry><entry><title type="html">File Types in the Xenoblade Series</title><link href="https://alrest.wiki/files" rel="alternate" type="text/html" title="File Types in the Xenoblade Series" /><published>2022-10-17T00:00:00+00:00</published><updated>2022-10-17T00:00:00+00:00</updated><id>https://alrest.wiki/file-types</id><content type="html" xml:base="https://alrest.wiki/files"><![CDATA[<p class="notice--info">This page contains all of the proprietary file types found across all of the Xenoblade series.</p>
+
+<h2 id="all-purpose">All-purpose</h2>
+
+<h3 id="arh">ARH</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">arh1</code> (<code class="language-plaintext highlighter-rouge">61 72 68 31</code>)</p>
+
+<p>Description: Proprietary header file. Contains information for the corresponding <a href="#ard">ARD</a> file. This includes header files of each object and how they are stored in the ARD file.</p>
+
+<p>Compatible parser: <a href="https://github.com/PredatorCZ/XenoLib">XenoLib</a></p>
+
+<h3 id="ard">ARD</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">xbc1\x03</code> (<code class="language-plaintext highlighter-rouge">78 62 63 31 03</code>)</p>
+
+<p>Description: Proprietary archive-like file containing information such as its child file. Requires a corresponding <a href="#arh">ARH</a> file to decompress.</p>
+
+<p>Compatible parser: <a href="https://github.com/PredatorCZ/XenoLib">XenoLib</a></p>
+
+<h3 id="pck">PCK</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">AKPK</code> (<code class="language-plaintext highlighter-rouge">41 4B 50 4B</code>)</p>
+
+<p>Description: Proprietary packed audio format by Wwise. This file format is used across numerous games and contains entries for all of the soundbanks <code class="language-plaintext highlighter-rouge">.bnk</code> and encoded WEMs <code class="language-plaintext highlighter-rouge">.wem</code> featured in the game.</p>
+
+<p>Compatible parser: [Custom BMS script]</p>
+
+<h3 id="bdat">BDAT</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">BDAT</code> (<code class="language-plaintext highlighter-rouge">42 44 41 54</code>)</p>
+
+<p>Description: Proprietary data table format. A BDAT may contain multiple tables. Each table begins with the hex byte <code class="language-plaintext highlighter-rouge">BDAT\x040</code> (<code class="language-plaintext highlighter-rouge">42 44 41 54 04 30</code>). An entry requires has a unique 4-byte ID and may contain a wide variety of compatible data formats, ranging from floats to strings.</p>
+
+<p>Compatible parser: <a href="https://github.com/PredatorCZ/XenoLib">XenoLib</a></p>
+
+<h3 id="crt">CRT</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">CRT</code> (<code class="language-plaintext highlighter-rouge">43 52 54</code>)</p>
+
+<p>Description: Proprietary file for end-credits. Not to be confused to certificate files typically associated with this file extension.</p>
+
+<p>Compatible parser: N/A</p>
+
+<h3 id="eth">ETH</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">69 C9 0B 07 69 20 77 78</code></p>
+
+<p>Description: Proprietary file format for Event Theater. Purpose unknown.</p>
+
+<p>Compatible parser: N/A</p>
+
+<h3 id="pkb">PKB</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">N/A</code></p>
+
+<p>Description: Primary archive format for XC1(Wii). Requires PKH file as key to decompress.</p>
+
+<p>Compatible parser: [Custom BMS script]</p>
+
+<h3 id="cpk">CPK</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">43 50 4B 20</code></p>
+
+<p>Description: Primary archive for Xenoblade X.</p>
+
+<p>Compatible parser: [Custom BMS script]</p>
+
+<h3 id="xbc1">XBC1</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">xbc1</code> (<code class="language-plaintext highlighter-rouge">78 62 63 31</code>)</p>
+
+<p>Description: An all-purpose compression format that several other Xenoblade formats depend on. In most cases, the underlying compression format is zlib, though this may occasionally differ in rare instances, such as zstandard in some ARD files.</p>
+
+<p>Structure:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Offset</th>
+      <th>Size</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0x00</td>
+      <td>0x04</td>
+      <td>XBC1 magic</td>
+    </tr>
+    <tr>
+      <td>0x04</td>
+      <td>0x04</td>
+      <td>Compression type</td>
+    </tr>
+    <tr>
+      <td>0x08</td>
+      <td>0x04</td>
+      <td>Uncompressed size</td>
+    </tr>
+    <tr>
+      <td>0x0C</td>
+      <td>0x04</td>
+      <td>Compressed size</td>
+    </tr>
+    <tr>
+      <td>0x10</td>
+      <td>0x04</td>
+      <td>Unknown</td>
+    </tr>
+    <tr>
+      <td>0x14</td>
+      <td>0x1C</td>
+      <td>Filename</td>
+    </tr>
+    <tr>
+      <td>0x30</td>
+      <td>Dynamic</td>
+      <td>Compressed data</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Compatible parser: N/A</p>
+
+<h2 id="modelsanimationstextures">Models/Animations/Textures</h2>
+
+<h3 id="beh">BEH</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">HDEV</code> (<code class="language-plaintext highlighter-rouge">68 64 65 76</code>)</p>
+
+<p>Description: Proprietary cutscene header file. Contains references to all data (voice lines, actors, objects, effects, engine commands, etc.) used in the cutscene. Every file references “EventBuilder v0.0.27” tool at the end of it. Based on the file contents EventBuilder seems to be pretty advanced cutscene authoring tool similar to Source Filmmaker and Unreal Sequencer.</p>
+
+<p>Compatible parser: N/A</p>
+
+<h3 id="beb">BEB</h3>
+
+<p>Header: N/A</p>
+
+<p>Description: Proprietary cutscene data file. Purpose unknown.</p>
+
+<p>Compatible parser: N/A</p>
+
+<h3 id="wismt">WISMT</h3>
+
+<p>Header: N/A (see <a href="#xbc1">XBC1</a>)</p>
+
+<p>Description: Proprietary model format. This file format may contain raw mesh data, textures, and shader code. Typically associated with <a href="#wimdo">WIMDO</a>.</p>
+
+<p>Compatible parser: N/A</p>
+
+<h3 id="wimdo">WIMDO</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">DM&lt;XX&gt;</code> (<code class="language-plaintext highlighter-rouge">44 4D XX XX</code>)</p>
+
+<p>Description: Proprietary model format. This file format may contain mesh, materials, state flags, bones used for mesh weights, etc. A corresponding <a href="#wismt">WISMT</a> file may not exist, depending on whether a raw mesh data is embedded within the <a href="#wimdo">WIMDO</a>.</p>
+
+<p>Compatible parser: <a href="https://github.com/PredatorCZ/XenoLib">XenoLib</a></p>
+
+<h3 id="wilay">WILAY</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">LAHD\x13'</code> (<code class="language-plaintext highlighter-rouge">4C 41 48 44 13 27</code>)</p>
+
+<p>Description: Proprietary layout file. Often used in menus and is likely to contain a common image format within.</p>
+
+<p>Compatible parser: <a href="https://github.com/Thealexbarney/XbTool">XbTool</a></p>
+
+<h3 id="brres">BRRES</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">62 72 65 73</code></p>
+
+<p>Description: Primary model container for characters, NPCs, and enemeis in XC1(Wii).</p>
+
+<p>Compatible parser: <a href="https://github.com/soopercool101/BrawlCrate">BrawlCrate</a>/<a href="https://gamebanana.com/tools/6293">BRRESViewer</a></p>
+
+<h3 id="mca">MCA</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">6D 63 61 00</code></p>
+
+<p>Description: Contains animations for characters, NPCs, and enemeis in XC1(Wii).</p>
+
+<p>Compatible parser: <a href="https://gamebanana.com/tools/6293">BRRESViewer</a></p>
+
+<h3 id="kyp">KYP</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">4B 59 50 00</code></p>
+
+<p>Description: Contains both models and animations for characters, NPCs, and enemeis in XC1(Wii).</p>
+
+<p>Compatible parser: <a href="https://gamebanana.com/tools/6293">BRRESViewer</a></p>
+
+<h3 id="camdo">CAMDO</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">4D 58 4D 44</code></p>
+
+<p>Description: Primary model format for Xenoblade X. Related to CASMT.</p>
+
+<p>Compatible parser: <a href="https://github.com/PredatorCZ/XenoMax">XenoMax</a></p>
+
+<h3 id="casmt">CASMT</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">N/A</code></p>
+
+<p>Description: Primary model format for Xenoblade X. Related to CAMDO.</p>
+
+<p>Compatible parser: <a href="https://github.com/PredatorCZ/XenoMax">XenoMax</a></p>
+
+<h3 id="attranim">ATTRANIM</h3>
+
+<h2 id="maps">Maps</h2>
+
+<h3 id="wismda">WISMDA</h3>
+
+<p>Header: N/A</p>
+
+<p>Description: Proprietary overworld map file format. Contains information about the map terrain, props, textures, materials, etc.</p>
+
+<p>Compatible parser: N/A</p>
+
+<h3 id="wismhd">WISMHD</h3>
+
+<p class="notice--warning"><strong>Another vision…</strong> This file format is still being studied.</p>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">DMSM\x80'</code> (<code class="language-plaintext highlighter-rouge">44 4D 53 4D 80 27</code>)</p>
+
+<p>Description: Proprietary map-related file format. Contains table maps of related <a href="#wismda">WISMDA</a> files and other map-related information, such as volumetric cloud information and more.</p>
+
+<p>Compatible parser: N/A</p>
+
+<h3 id="nvhe">NVHE</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">NVMS</code> (<code class="language-plaintext highlighter-rouge">4E 56 4D 53</code>)</p>
+
+<p>Description: Proprietary file format related to maps. Purpose unknown.</p>
+
+<p>Compatible parser: N/A</p>
+
+<h3 id="idcm">IDCM</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">IDCM</code> (<code class="language-plaintext highlighter-rouge">49 44 43 4D</code>)</p>
+
+<p>Description: Proprietary file format related to maps. Speculated to be collision mesh.</p>
+
+<p>Compatible parser: N/A</p>
+
+<h3 id="dap">DAP</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">44 41 50 31</code></p>
+
+<p>Description: Primary file archive for maps in XC1(Wii). Related to LOD.</p>
+
+<p>Compatible parser: [Custom BMS script]</p>
+
+<h3 id="lod">LOD</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">4C 4F 44 49</code></p>
+
+<p>Description: Speculated to contain LOD data for maps in XC1(Wii). Related to DAP.</p>
+
+<p>Compatible parser: N/A</p>
+
+<h3 id="map">MAP</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">62 72 65 73</code></p>
+
+<p>Description: Contains base map objects for XC1(Wii). Resides inside DAP archives.
+Other related files(albeit unexplored) include ID, LGT, MPF, OCC, and KP. Extracted from DAP.</p>
+
+<p>Compatible parser: <a href="https://gamebanana.com/tools/6293">BRRESViewer</a></p>
+
+<h3 id="casmda">CASMDA</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">57 E0 E0 57</code></p>
+
+<p>Description: Archive for Xenoblade X map data. Related files include CANVDA, CANVHE, and CASMHD, although minimal research has been done on them.</p>
+
+<p>Compatible parser: <a href="https://github.com/PredatorCZ/XenoMax">XenoMax</a></p>
+
+<h3 id="hkx">HKX</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">57 E0 E0 57</code></p>
+
+<p>Description: Collision data for Xenoblade X maps. Little research has been done.</p>
+
+<p>Compatible parser: N/A</p>
+
+<h2 id="videoaudio">Video/Audio</h2>
+
+<h3 id="webm">WEBM</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">1A 45 DF A3</code></p>
+
+<p>Description: Open-source WebM audiovisual container file format. In Xenoblade’s case, these typically hold pre-rendered cutscenes in a VP9 video stream and may also contain an optional Vorbis audio stream that does not hold any data (as the audio is played separately from Wwise).</p>
+
+<p>Compatible parser: <a href="https://ffmpeg.org/">ffmpeg</a></p>
+
+<h3 id="adx">ADX</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">80 00 00 24</code></p>
+
+<p>Description: Primary audio format for XC1(Wii) and XCX.</p>
+
+<p>Compatible parser: <a href="https://vgmstream.org/">vgmstream</a></p>
+
+<h3 id="acb">ACB</h3>
+
+<p>Header: <code class="language-plaintext highlighter-rouge">40 55 54 46</code></p>
+
+<p>Description: Primary audio archive for XCX. Similar to BNK.</p>
+
+<p>Compatible parser: <a href="https://vgmstream.org/">vgmstream</a></p>
+
+<h3 id="wem">WEM</h3>
+
+<h3 id="bnk">BNK</h3>
+
+<h2 id="others">Others</h2>
+
+<h3 id="svd">SVD</h3>
+
+<h3 id="wiltp">WILTP</h3>
+
+<h3 id="kzps">KZPS</h3>
+
+<h3 id="seg">SEG</h3>
+
+<h3 id="mi">MI</h3>
+
+<h3 id="nvda">NVDA</h3>
+
+<h3 id="lvb">LVB</h3>
+
+<h3 id="wiefxa">WIEFXA</h3>
+
+<h3 id="wipac">WIPAC</h3>
+
+<h3 id="chr">CHR</h3>
+
+<h3 id="mot">MOT</h3>
+
+<h3 id="aab">AAB</h3>
+
+<h3 id="pad">PAD</h3>
+
+<h3 id="witex">WITEX</h3>
+
+<h3 id="wishp">WISHP</h3>
+
+<h3 id="wilgt">WILGT</h3>
+
+<h3 id="witx">WITX</h3>
+
+<h3 id="data">DATA</h3>
+
+<h3 id="ptc">PTC</h3>
+
+<h3 id="msbp">MSBP</h3>
+
+<h3 id="idmap">IDMAP</h3>
+
+<h3 id="wifnt">WIFNT</h3>
+
+<h3 id="wisty">WISTY</h3>
+
+<h3 id="ocpam">OCPAM</h3>
+
+<h3 id="dat">DAT</h3>
+
+<h3 id="anm">ANM</h3>
+
+<h3 id="eva">EVA</h3>]]></content><author><name>Alrest Wiki Community</name></author><category term="xenoblade-general" /><category term="Resources" /><category term="Xenoblade (Series)" /><summary type="html"><![CDATA[File types found within the Xenoblade (Series) files.]]></summary></entry><entry><title type="html">Get Started with Xenoblade Reverse Engineering</title><link href="https://alrest.wiki/get-started" rel="alternate" type="text/html" title="Get Started with Xenoblade Reverse Engineering" /><published>2022-10-17T00:00:00+00:00</published><updated>2022-10-17T00:00:00+00:00</updated><id>https://alrest.wiki/get-started</id><content type="html" xml:base="https://alrest.wiki/get-started"><![CDATA[<h2 id="which-xeno-series-would-you-like-to-start-with">Which Xeno-series would you like to start with?</h2>]]></content><author><name>Alrest Wiki Community</name></author><summary type="html"><![CDATA[Which Xeno-series would you like to start with?]]></summary></entry><entry><title type="html">Xenoblade 3 Resource Links</title><link href="https://alrest.wiki/xenoblade3/resources/" rel="alternate" type="text/html" title="Xenoblade 3 Resource Links" /><published>2022-10-17T00:00:00+00:00</published><updated>2022-10-17T00:00:00+00:00</updated><id>https://alrest.wiki/xenoblade3/resources</id><content type="html" xml:base="https://alrest.wiki/xenoblade3/resources/"><![CDATA[<p class="notice--info"><strong>Reyn, you’re a lifesafer!</strong> This page serves as a master page for links to third-party Xenoblade-3-related resources.</p>
+
+<h2 id="tools">Tools</h2>
+
+<ul>
+  <li><a href="https://github.com/PredatorCZ/XenoLib">XenoLib</a>
+    <ul>
+      <li>A C++-based Xenoblade format parser and converter. This library is able to handle most files from Xenoblade 3, including unpacking ARD files, model and texture dumping, and more.</li>
+    </ul>
+  </li>
+  <li><a href="https://www.richwhitehouse.com/index.php?content=inc_projects.php&amp;showproject=91">Noesis</a>
+    <ul>
+      <li>Noesis is a tool for previewing and converting between hundreds of model, image, and animation formats.</li>
+      <li>Noesis out of the box does not necessarily support Xenoblade model formats. See [Xenoblade-Switch-Model-Importer-Noesis] instead.</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/Turk645/Xenoblade-Switch-Model-Importer-Noesis">Xenoblade-Switch-Model-Importer-Noesis</a>
+    <ul>
+      <li>A Python-based Noesis-specific script that adds support for the <a href="/files#wismt">WISMT</a> format that several Xenoblade games use.</li>
+      <li>See <a href="/xenoblade-model-viewing">Viewing and Exporting Xenoblade Models</a> for more information.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="spreadsheet">Spreadsheet</h2>
+
+<ul>
+  <li><a href="https://docs.google.com/spreadsheets/d/12wgzG4gIgd8iY6GyYw_ObsUTDjE0ZvE2CMNtX5WrWzs/">Model database</a> @ Google Docs
+    <ul>
+      <li>The model database contains a list of known models along with their internal filenames. Useful for hunting down models of specific characters.</li>
+    </ul>
+  </li>
+  <li><a href="https://docs.google.com/spreadsheets/d/1bhNzoqWxh-QgFg4KLatQ4pDPSn6CNwgy/">Voice lines database (EN)</a> @ Google Docs
+    <ul>
+      <li>The voice lines database contains a list of known voice data for cutscenes and their relevant filenames.</li>
+    </ul>
+  </li>
+  <li><a href="https://docs.google.com/spreadsheets/d/1MFfO8aTqRX8UODGAaX1R99M8As2K9T1IzyNpD-7bsRU/">Soundtrack Composer Guess Spreadsheet</a> @ Google Docs
+    <ul>
+      <li>Originally created as a fun guessing list for who composed what track in Xenoblade 3, this spreadsheet can be used to lookup the various IDs associated with the tracks of the game.</li>
+    </ul>
+  </li>
+</ul>]]></content><author><name>Alrest Wiki Community</name></author><category term="Xenoblade3" /><category term="Resources" /><category term="Xenoblade 3" /><category term="Models" /><category term="Textures" /><category term="Voice lines" /><summary type="html"><![CDATA[Reyn, you’re a lifesafer! This page serves as a master page for links to third-party Xenoblade-3-related resources.]]></summary></entry></feed>
