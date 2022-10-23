@@ -13,6 +13,12 @@ excerpt: "Viewing and exporting models from Xenoblade (Wii)."
 published: false
 ---
 
+{: .notice--info}
+This page assumes you have already dumped and extracted all of the files from your copy of the supported Xenoblade game(s).
+
+{: .notice--warning}
+This guide is for Xenoblade title(s) released on the Nintendo Wii, which means this guide only applies to the original Xenoblade game on Wii.
+
 Extracting basic models from Xenoblade 1(Wii)
 You can use either Brawlcrate or brresviewer to extract models. Brresviewer is the only way to extract animations.
 Brawlcrate link [https://github.com/soopercool101/BrawlCrate/releases/]
