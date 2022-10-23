@@ -19,6 +19,13 @@ This page assumes you have already dumped and extracted all of the files from yo
 {: .notice--warning}
 This guide is for Xenoblade title(s) released on the Nintendo Wii U, which means this guide only applies to Xenoblade X.
 
+## What You Need
+
+- The latest release of [Xenomax](https://github.com/PredatorCZ/XenoMax)
+- The latest release of [XenoToolset](https://github.com/PredatorCZ/XenoToolset)
+
+## Instructions
+
 Importing Xenoblade X models
 You need 3ds Max to extract X models.
 Xenomax for maps[https://github.com/PredatorCZ/XenoMax]

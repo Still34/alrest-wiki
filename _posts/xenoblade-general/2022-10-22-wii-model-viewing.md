@@ -19,10 +19,18 @@ This page assumes you have already dumped and extracted all of the files from yo
 {: .notice--warning}
 This guide is for Xenoblade title(s) released on the Nintendo Wii, which means this guide only applies to the original Xenoblade game on Wii.
 
-Extracting basic models from Xenoblade 1(Wii)
-You can use either Brawlcrate or brresviewer to extract models. Brresviewer is the only way to extract animations.
-Brawlcrate link [https://github.com/soopercool101/BrawlCrate/releases/]
-brresviewer[https://gamebanana.com/tools/download/6293#FileInfo_162953]
+## What You Need
+
+- The latest version of [BrawlCrate](https://github.com/soopercool101/BrawlCrate/releases/) (models)
+OR
+- The latest version of [BRRESViewer](https://gamebanana.com/tools/download/6293) (models + animations)
+
+## Instructions
+
+### Section I.1 - Extracting Assets using BrawlCrate
+### Section I.2 - Extracting Assets using BRRESViewer
+
+<!-- 
 Brresviewer takes brres, kyp, and mca. A model must be loaded to preview animations.
 File/Export All Files lets you extract the model, textures, and animations.(PSK and PSA are preferred)
 DN UnPSA Toolkit is also strongly recommended, as it lets you combine the PSA files which contain only one animation into a PSA that holds multiple animations. Extremely helpful when porting animations to other 3d engines.
@@ -38,4 +46,4 @@ For Blender, its less streamlined, but still works. Simple import/export options
 
 Extracting map models from Xenoblade 1(Wii)
 Use brresviewer to open the MAP file, then you can export as psk/obj(doesn't matter since no animations).
-Then import into 3ds Max/Blender & export if using psk. Don't expect the maps to contain a lot, majority of objects are stored elsewhere/inaccesable.
+Then import into 3ds Max/Blender & export if using psk. Don't expect the maps to contain a lot, majority of objects are stored elsewhere/inaccesable. -->
